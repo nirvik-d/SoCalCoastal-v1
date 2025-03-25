@@ -1,26 +1,114 @@
-@import "tailwindcss";
+@import "../node_modules/mini.css/dist/mini-default.min.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+#root {
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.text-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 2rem 30rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+form {
+  min-width: 300px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.navigation-bar {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 2rem 0;
+}
+
+a.button.active {
+  border: 1px solid var(--fore-color);
+}
+
+.title {
+  height: 10px;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.homepage-body {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.homepage-community-image {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.homepage-footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+}
+
+.communities-title {
+  height: 10px;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.communities-body {
+  padding: 2rem 3rem;
+  max-width: 100%;
+}
+
+.communities-card {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  padding: 2em;
+}
+
+.communities-card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.communities-card-section {
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.communities-card-button {
+  margin-top: 2px;
+}
+
+.community-details-card {
+  padding: 2rem 0;
+  display: flex; /* Use flexbox for center alignment inside the card */
+  justify-content: center;
+  align-items: center;
 }
