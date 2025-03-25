@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SoCal Coastal - an app about communities of Southern California
 
-## Getting Started
+A web app designed for users to browse through different major coastal cities of Southern California and learn about them.
 
-First, run the development server:
+Requirements to run the app:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Vite
+- JSON server
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+How to get the web app running
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Start the vite server in a terminal using `npm run dev`
+- Start the JSON server using `npm run api` after installing the server.
+- Go to your browser and enter `localhost:5173`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Home page**
+![image](https://github.com/user-attachments/assets/14b2285e-786c-4245-be15-f1b537a6b696)
 
-## Learn More
+**Communities page**
+![image](https://github.com/user-attachments/assets/0dbcdee5-d523-4a79-961b-50704a4689cc)
 
-To learn more about Next.js, take a look at the following resources:
+TODO:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Add an Add community button.
