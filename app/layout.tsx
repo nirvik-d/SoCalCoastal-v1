@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <title>SoCal Coastal Communities</title>
       </head>
       <body>
-        <header className="navigation-bar">
+        <header className="sticky navigation-bar">
           <Link href="/" className="button rounded">
             <span className="icon-home"></span> Home
           </Link>

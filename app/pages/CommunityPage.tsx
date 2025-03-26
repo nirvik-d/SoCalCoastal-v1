@@ -34,7 +34,7 @@ function DisplayCommunityPage() {
       </header>
 
       {loading && (
-        <div className="center-page">
+        <div className="loading">
           <span className="spinner primary"></span>
           <p>Loading...</p>
         </div>
