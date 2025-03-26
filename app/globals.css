@@ -1,12 +1,5 @@
 @import "../node_modules/mini.css/dist/mini-default.min.css";
 
-body {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .text-error {
   color: red;
   font-size: 14px;
@@ -72,8 +65,8 @@ a.button.active {
 }
 
 .communities-body {
-  padding: 2rem 3rem;
-  max-width: 100%;
+  padding: 2rem 20rem;
+  max-width: 70%;
 }
 
 .communities-card {
@@ -107,8 +100,19 @@ a.button.active {
 }
 
 .community-details-card {
-  padding: 2rem 0;
-  display: flex; /* Use flexbox for center alignment inside the card */
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: darkgray;
+  padding: 2em;
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.community-details-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

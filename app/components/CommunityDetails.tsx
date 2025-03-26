@@ -13,7 +13,7 @@ const DisplayCommunityDetails = ({ community }: CommunityDetailsProps) => {
             src={community.image_url}
             alt={community.name}
           />
-          <section className="section dark">
+          <section className="section dark community-details-center">
             <h3 className="strong">
               <strong>{community.name}</strong>
             </h3>
