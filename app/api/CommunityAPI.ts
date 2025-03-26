@@ -1,6 +1,6 @@
 import { Community } from "@/app/components/Community";
 
-const baseUrl = "/api"; // Next.js API base URL
+const baseUrl = "/api";
 const url = `${baseUrl}/communities`;
 
 function checkStatus(response: Response) {
@@ -22,12 +22,15 @@ function convertToCommunityModel(item: any): Community {
 
 const CommunityAPI = {
   async get(page: number) {
-    return fetch(url)
+    console.log(`Fetching from: ${url}`); // Debugging log
+    return fetch(`${url}`)
       .then(checkStatus)
       .then(parseJSON)
-      .catch((error) => {
-        console.error("Client error:", error);
-        throw new Error("Error retrieving communities.");
+      .catch((error: TypeError) => {
+        console.log("log client error " + error);
+        throw new Error(
+          "There was an error retrieving the communities. Please try again."
+        );
       });
   },
 

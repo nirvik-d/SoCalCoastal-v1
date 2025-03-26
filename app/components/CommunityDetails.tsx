@@ -1,6 +1,4 @@
-// Import the necessary modules and Community class
-import { Community } from "@/app/components/Community"; // Adjust the path as needed
-
+import { Community } from "@/app/components/Community";
 interface CommunityDetailsProps {
   community: Community;
 }
@@ -12,7 +10,7 @@ const DisplayCommunityDetails = ({ community }: CommunityDetailsProps) => {
         <div className="card large">
           <img
             className="rounded"
-            src={community.imageUrl}
+            src={community.image_url}
             alt={community.name}
           />
           <section className="section dark">
@@ -23,7 +21,7 @@ const DisplayCommunityDetails = ({ community }: CommunityDetailsProps) => {
             <p>County: {community.county}</p>
             <p>
               <mark className="active">
-                {community.isVisited ? "Visited." : "Not visited yet."}
+                {community.is_visited ? "Visited." : "Not visited yet."}
               </mark>
             </p>
           </section>

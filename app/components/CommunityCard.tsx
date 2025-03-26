@@ -1,6 +1,5 @@
-// Import necessary Next.js modules and the Community class
+import { Community } from "@/app/components/Community";
 import Link from "next/link";
-import { Community } from "@/app/components/Community"; // Adjust the path accordingly
 
 // Function to format the community description
 function formatDescription(description: string): string {
@@ -17,31 +16,29 @@ interface CommunityCardProps {
 // DisplayCommunityCard component
 function DisplayCommunityCard({ community, onEdit }: CommunityCardProps) {
   const handleOnClickEdit = (communityBeingEdited: Community) => {
-    onEdit(communityBeingEdited); // Pass the community to the onEdit function
+    onEdit(communityBeingEdited);
   };
 
   return (
     <div className="card communities-card">
       <img
         className="communities-card-img"
-        src={community.imageUrl}
+        src={community.image_url}
         alt={community.name}
       />
       <section className="section dark communities-card-section">
-        <Link href={`/communities/${community.id}`}>
-          <a>
-            <h5 className="strong">
-              <strong>{community.name}</strong>
-            </h5>
-            <p>
-              <b>Description: </b>
-              {formatDescription(community.description)}
-            </p>
-            <p>
-              <b>County: </b>
-              {community.county}
-            </p>
-          </a>
+        <Link href={`/communities/${community.id}`} passHref>
+          <h5 className="strong">
+            <strong>{community.name}</strong>
+          </h5>
+          <p>
+            <b>Description: </b>
+            {formatDescription(community.description)}
+          </p>
+          <p>
+            <b>County: </b>
+            {community.county}
+          </p>
         </Link>
         <div className="button-container communities-card-button">
           <button

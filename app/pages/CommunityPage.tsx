@@ -1,30 +1,21 @@
+"use client"; // Ensure this is a Client Component
+
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router"; // Use Next.js's useRouter hook
+import { useParams } from "next/navigation"; // For dynamic routing in Next.js App Router
 import { CommunityAPI } from "@/app/api/CommunityAPI";
 import { Community } from "@/app/components/Community";
 import DisplayCommunityDetails from "@/app/components/CommunityDetails";
 
-interface CommunityPageProps {
-  initialCommunity: Community | null;
-  error: string | null;
-}
-
-const DisplayCommunityPage = ({
-  initialCommunity,
-  error,
-}: CommunityPageProps) => {
+function DisplayCommunityPage() {
   const [loading, setLoading] = useState<boolean>(false);
-  const [community, setCommunity] = useState<Community | null>(
-    initialCommunity
-  );
-  const [errorState, setErrorState] = useState<string | null>(error);
-  const router = useRouter();
-  const { id } = router.query; // Extract the dynamic ID from the URL
+  const [community, setCommunity] = useState<Community | null>(null);
+  const [errorState, setErrorState] = useState<string | null>(null);
+  const { id } = useParams(); // Get dynamic ID from the URL
 
   useEffect(() => {
     if (id) {
       setLoading(true);
-      CommunityAPI.find(Number(id)) // Ensure that id is a number
+      CommunityAPI.find(Number(id)) // Ensure `id` is a number
         .then((data) => {
           setCommunity(data);
           setLoading(false);
@@ -62,25 +53,6 @@ const DisplayCommunityPage = ({
       {community && <DisplayCommunityDetails community={community} />}
     </div>
   );
-};
+}
 
 export default DisplayCommunityPage;
-
-export const getServerSideProps = async (context: any) => {
-  const { id } = context.params; // Access the dynamic `id` parameter
-  let community = null;
-  let error = null;
-
-  try {
-    community = await CommunityAPI.find(Number(id));
-  } catch (e: any) {
-    error = e.message || "Error loading community";
-  }
-
-  return {
-    props: {
-      initialCommunity: community,
-      error,
-    },
-  };
-};

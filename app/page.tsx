@@ -1,5 +1,7 @@
-import DisplayHomePage from "@/app/HomePage";
+import DisplayHomePage from "@/app/pages/HomePage";
 
-export default function Home() {
+function Home() {
   return <DisplayHomePage />;
 }
+
+export default Home;

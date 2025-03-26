@@ -1,5 +1,7 @@
+"use client";
+
 import { SyntheticEvent, useState } from "react";
-import { Community } from "@/app/components/Community"; // Adjust the import path accordingly
+import { Community } from "@/app/components/Community";
 
 interface CommunityFormProps {
   onCancel: () => void;
@@ -121,7 +123,7 @@ const DisplayCommunityForm = ({
       <input
         type="checkbox"
         name="isVisited"
-        checked={community.isVisited}
+        checked={community.is_visited}
         onChange={handleChange}
       />
 
