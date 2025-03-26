@@ -1,28 +1,36 @@
-import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { NextRequest, NextResponse } from "next/server";
+import { supabase } from "@/lib/supabase"; // Ensure correct import
 
-// GET: Fetch a single community by ID
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: Record<string, string> }
 ) {
-  const { id } = params;
+  const { params } = context;
 
-  console.log(`Fetching community with ID: ${id}`); // Debugging log
+  if (!params || !params.id) {
+    return NextResponse.json(
+      { error: "Missing ID parameter" },
+      { status: 400 }
+    );
+  }
 
-  // Fetch the community by ID from the Supabase database
+  const id = params.id;
+  console.log("Fetching community with ID:", id);
+
   const { data, error } = await supabase
     .from("SoCalCoastalCommunities")
     .select("*")
     .eq("id", id)
     .single();
 
-  if (error) {
+  if (error || !data) {
     console.error("Supabase error:", error);
-    return NextResponse.json({ error: error.message }, { status: 404 });
+    return NextResponse.json(
+      { error: error?.message || "Not found" },
+      { status: 404 }
+    );
   }
 
-  console.log("Found community:", data); // Debugging log
   return NextResponse.json(data, { status: 200 });
 }
 
