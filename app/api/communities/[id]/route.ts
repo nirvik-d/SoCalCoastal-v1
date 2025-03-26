@@ -2,19 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase"; // Ensure correct import
 
 export async function GET(
-  request: NextRequest,
-  context: { params: Record<string, string> }
+  req: NextRequest,
+  context: { params: { id: string } }
 ) {
-  const { params } = context;
+  const { id } = context.params;
 
-  if (!params || !params.id) {
-    return NextResponse.json(
-      { error: "Missing ID parameter" },
-      { status: 400 }
-    );
-  }
-
-  const id = params.id;
   console.log("Fetching community with ID:", id);
 
   const { data, error } = await supabase
