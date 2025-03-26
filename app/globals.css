@@ -1,6 +1,6 @@
 @import "../node_modules/mini.css/dist/mini-default.min.css";
 
-#root {
+body {
   max-width: 70%;
   margin: 0 auto;
   padding: 2rem;
