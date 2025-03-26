@@ -8,10 +8,13 @@ Requirements to run the app locally:
 - Use npm run dev
 
 **Home page**
-![image](https://github.com/user-attachments/assets/14b2285e-786c-4245-be15-f1b537a6b696)
+![image](https://github.com/user-attachments/assets/5396cab9-bb15-4344-bf9f-401eadba5078)
 
 **Communities page**
-![image](https://github.com/user-attachments/assets/0dbcdee5-d523-4a79-961b-50704a4689cc)
+![image](https://github.com/user-attachments/assets/a0942b8a-f60d-471f-9c9e-7307206b8e56)
+
+**Community details page**
+![image](https://github.com/user-attachments/assets/3f3b3ff7-4530-4a21-bb3e-73228d51cb29)
 
 TODO:
 
