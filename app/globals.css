@@ -1,7 +1,7 @@
 @import "../node_modules/mini.css/dist/mini-default.min.css";
 
 body {
-  max-width: 70%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
