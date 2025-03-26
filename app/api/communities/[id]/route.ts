@@ -1,36 +1,32 @@
-import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase"; // Ensure correct import
+import { NextResponse } from "next/server";
+import { supabase } from "@/lib/supabase";
 
-export async function GET(
-  req: NextRequest,
-  context: { params: { id: string } }
-) {
-  const { id } = context.params;
+// GET: Fetch a single community by ID
+type Params = Promise<{ id: string }>;
 
-  console.log("Fetching community with ID:", id);
+export async function GET(request: Request, { params }: { params: Params }) {
+  const { id } = await params;
 
+  console.log(`Fetching community with ID: ${id}`); // Debugging log
+
+  // Fetch the community by ID from the Supabase database
   const { data, error } = await supabase
     .from("SoCalCoastalCommunities")
     .select("*")
     .eq("id", id)
     .single();
 
-  if (error || !data) {
+  if (error) {
     console.error("Supabase error:", error);
-    return NextResponse.json(
-      { error: error?.message || "Not found" },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 404 });
   }
 
+  console.log("Found community:", data); // Debugging log
   return NextResponse.json(data, { status: 200 });
 }
 
 // PUT: Update a community by ID
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: Request, { params }: { params: Params }) {
   const { id } = await params;
   const numericId = parseInt(id);
 
