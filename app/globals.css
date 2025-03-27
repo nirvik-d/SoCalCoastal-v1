@@ -1,5 +1,9 @@
 @import "../node_modules/mini.css/dist/mini-default.min.css";
 
+.container {
+  padding: 0 0;
+}
+
 .text-error {
   color: red;
   font-size: 14px;
@@ -73,8 +77,12 @@ a.button.active {
 }
 
 .communities-body {
-  padding: 2rem 20rem;
-  max-width: 70%;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .communities-card {

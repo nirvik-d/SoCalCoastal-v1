@@ -69,7 +69,7 @@ function DisplayCommunitiesPage() {
         </div>
       )}
 
-      <section className="communities-body">
+      <section>
         <GenerateCommunityList
           communities={communities}
           onSave={saveCommunity}

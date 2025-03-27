@@ -37,7 +37,7 @@ const GenerateCommunityList = ({ communities, onSave }: CommunityListProps) => {
     </div>
   ));
 
-  return <div className="row">{listItems}</div>;
+  return <div className="row communities-body">{listItems}</div>;
 };
 
 export default GenerateCommunityList;
