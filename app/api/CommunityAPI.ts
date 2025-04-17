@@ -3,7 +3,7 @@ import { Community } from "@/app/components/Community";
 const baseUrl = "/api";
 const url = `${baseUrl}/communities`;
 
-function checkStatus(response: Response) {
+export function checkStatus(response: Response) {
   if (response.ok) {
     return response;
   } else {
@@ -16,7 +16,7 @@ function parseJSON(response: Response) {
   return response.json();
 }
 
-function convertToCommunityModel(item: any): Community {
+export function convertToCommunityModel(item: any): Community {
   return new Community(item);
 }
 
