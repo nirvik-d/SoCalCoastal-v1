@@ -1,4 +1,4 @@
-import DisplayCommunityPage from "@/app/pages/CommunityPage";
+import { DisplayCommunityPage } from "@/app/pages/CommunityPage";
 
 function Community() {
   return <DisplayCommunityPage />;

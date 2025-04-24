@@ -1,53 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import GenerateCommunityList from "@/app/components/CommunityList";
-import { Community } from "@/app/components/Community";
-import { CommunityAPI } from "@/app/api/CommunityAPI";
+import React, { useState, useEffect } from "react";
+import { CommunityAPI } from "../api/CommunityAPI";
+import { GenerateCommunityList } from "../components/CommunityList";
+import { Community } from "../components/Community";
 
-function DisplayCommunitiesPage() {
+export function DisplayCommunitiesPage() {
   const [communities, setCommunities] = useState<Community[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
   let page = 1; // For testing only.
 
-  const sortCommunities = (communities: Community[]) => {
-    return communities.sort((a, b) => a.name.localeCompare(b.name));
-  };
-
-  const saveCommunity = (community: Community) => {
-    CommunityAPI.put(community)
-      .then((updatedCommunity) => {
-        let updatedCommunities = communities.map((c) =>
-          c.id === updatedCommunity.id ? new Community(updatedCommunity) : c
-        );
-        setCommunities(sortCommunities(updatedCommunities));
-      })
-      .catch((e) => {
-        if (e instanceof Error) {
-          setError(e.message);
-        }
-      });
-  };
+  function handleSaveCommunity(community: Community) {
+    saveCommunity(community, communities, setCommunities, setError);
+  }
 
   useEffect(() => {
-    async function loadCommunities() {
-      setLoading(true);
-      try {
-        const data = await CommunityAPI.get(page);
-        setCommunities((prevCommunities) =>
-          sortCommunities(page === 1 ? data : [...prevCommunities, ...data])
-        );
-      } catch (e) {
-        if (e instanceof Error) {
-          setError(e.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadCommunities();
+    loadCommunities(page, setCommunities, setError, setLoading);
   }, [page]);
 
   return (
@@ -72,7 +41,7 @@ function DisplayCommunitiesPage() {
       <section>
         <GenerateCommunityList
           communities={communities}
-          onSave={saveCommunity}
+          onSave={handleSaveCommunity}
         />
       </section>
 
@@ -86,4 +55,42 @@ function DisplayCommunitiesPage() {
   );
 }
 
-export default DisplayCommunitiesPage;
+export function sortCommunities(communities: Community[]) {
+  return [...communities].sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export async function saveCommunity(
+  community: Community,
+  communities: Community[],
+  setCommunities: React.Dispatch<React.SetStateAction<Community[]>>,
+  setError: React.Dispatch<React.SetStateAction<string | undefined>>
+) {
+  try {
+    const updatedCommunity = await CommunityAPI.put(community);
+    const updated = communities.map((c) =>
+      c.id === updatedCommunity.id ? new Community(updatedCommunity) : c
+    );
+    setCommunities(sortCommunities(updated));
+  } catch (e) {
+    if (e instanceof Error) setError(e.message);
+  }
+}
+
+export async function loadCommunities(
+  page: number,
+  setCommunities: React.Dispatch<React.SetStateAction<Community[]>>,
+  setError: React.Dispatch<React.SetStateAction<string | undefined>>,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+) {
+  setLoading(true);
+  try {
+    const data = await CommunityAPI.get(page);
+    setCommunities((prev) =>
+      sortCommunities(page === 1 ? data : [...prev, ...data])
+    );
+  } catch (e) {
+    if (e instanceof Error) setError(e.message);
+  } finally {
+    setLoading(false);
+  }
+}

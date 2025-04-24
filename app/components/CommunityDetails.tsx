@@ -1,9 +1,13 @@
-import { Community } from "@/app/components/Community";
+"use client";
+
+import React from "react";
+import { Community } from "../components/Community";
+
 interface CommunityDetailsProps {
   community: Community;
 }
 
-const DisplayCommunityDetails = ({ community }: CommunityDetailsProps) => {
+export function DisplayCommunityDetails({ community }: CommunityDetailsProps) {
   return (
     <div className="community-details-card">
       <div>
@@ -29,6 +33,4 @@ const DisplayCommunityDetails = ({ community }: CommunityDetailsProps) => {
       </div>
     </div>
   );
-};
-
-export default DisplayCommunityDetails;
+}

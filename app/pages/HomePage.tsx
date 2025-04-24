@@ -1,4 +1,6 @@
-export default function Home() {
+import React from "react";
+
+export function DisplayHomePage() {
   return (
     <div>
       <header className="title">

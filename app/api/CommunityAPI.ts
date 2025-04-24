@@ -1,4 +1,4 @@
-import { Community } from "@/app/components/Community";
+import { Community } from "../components/Community";
 
 const baseUrl = "/api";
 const url = `${baseUrl}/communities`;

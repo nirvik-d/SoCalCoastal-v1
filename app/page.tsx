@@ -1,4 +1,4 @@
-import DisplayHomePage from "@/app/pages/HomePage";
+import { DisplayHomePage } from "@/app/pages/HomePage";
 
 function Home() {
   return <DisplayHomePage />;

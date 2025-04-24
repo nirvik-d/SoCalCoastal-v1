@@ -1,21 +1,21 @@
-"use client"; // Ensure this is a Client Component
+"use client";
 
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation"; // For dynamic routing in Next.js App Router
-import { CommunityAPI } from "@/app/api/CommunityAPI";
-import { Community } from "@/app/components/Community";
-import DisplayCommunityDetails from "@/app/components/CommunityDetails";
+import React, { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import { CommunityAPI } from "../api/CommunityAPI";
+import { Community } from "../components/Community";
+import { DisplayCommunityDetails } from "../components/CommunityDetails";
 
-function DisplayCommunityPage() {
+export function DisplayCommunityPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [community, setCommunity] = useState<Community | null>(null);
   const [errorState, setErrorState] = useState<string | null>(null);
-  const { id } = useParams(); // Get dynamic ID from the URL
+  const { id } = useParams();
 
   useEffect(() => {
     if (id) {
       setLoading(true);
-      CommunityAPI.find(Number(id)) // Ensure `id` is a number
+      CommunityAPI.find(Number(id))
         .then((data) => {
           setCommunity(data);
           setLoading(false);
@@ -54,5 +54,3 @@ function DisplayCommunityPage() {
     </div>
   );
 }
-
-export default DisplayCommunityPage;

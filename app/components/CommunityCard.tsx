@@ -1,4 +1,7 @@
-import { Community } from "@/app/components/Community";
+"use client";
+
+import React from "react";
+import { Community } from "../components/Community";
 import Link from "next/link";
 
 // Function to format the community description
@@ -14,7 +17,10 @@ interface CommunityCardProps {
 }
 
 // DisplayCommunityCard component
-function DisplayCommunityCard({ community, onEdit }: CommunityCardProps) {
+export function DisplayCommunityCard({
+  community,
+  onEdit,
+}: CommunityCardProps) {
   const handleOnClickEdit = (communityBeingEdited: Community) => {
     onEdit(communityBeingEdited);
   };
@@ -52,5 +58,3 @@ function DisplayCommunityCard({ community, onEdit }: CommunityCardProps) {
     </div>
   );
 }
-
-export default DisplayCommunityCard;

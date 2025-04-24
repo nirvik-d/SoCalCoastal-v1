@@ -1,7 +1,7 @@
 "use client";
 
-import { SyntheticEvent, useState } from "react";
-import { Community } from "@/app/components/Community";
+import React, { SyntheticEvent, useState } from "react";
+import { Community } from "../components/Community";
 
 interface CommunityFormProps {
   onCancel: () => void;
@@ -9,11 +9,11 @@ interface CommunityFormProps {
   community: Community;
 }
 
-const DisplayCommunityForm = ({
+export function DisplayCommunityForm({
   onCancel,
   onSave,
   community: initialCommunity,
-}: CommunityFormProps) => {
+}: CommunityFormProps) {
   const [community, setCommunity] = useState(initialCommunity);
   const [errors, setErrors] = useState({
     name: "",
@@ -138,6 +138,4 @@ const DisplayCommunityForm = ({
       </div>
     </form>
   );
-};
-
-export default DisplayCommunityForm;
+}
